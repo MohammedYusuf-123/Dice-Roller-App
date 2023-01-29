@@ -34,13 +34,9 @@ fun DiceRollerApp() {
 }
 
 @Composable
-fun DiceWithButtonAndImage(
-    modifier: Modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
-) {
-    var result by remember {mutableStateOf(1)}
-    val imageResource = when(result) {
+fun DiceWithButtonAndImage() {
+    var result by remember { mutableStateOf(1) }
+    val imageResource = when (result) {
         1 -> R.drawable.dice_1
         2 -> R.drawable.dice_2
         3 -> R.drawable.dice_3
@@ -49,7 +45,9 @@ fun DiceWithButtonAndImage(
         else -> R.drawable.dice_6
     }
     Column(
-        modifier = modifier,
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
@@ -58,5 +56,4 @@ fun DiceWithButtonAndImage(
             Text(text = stringResource(R.string.roll))
         }
     }
-
 }
